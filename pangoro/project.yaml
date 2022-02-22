@@ -1,0 +1,23 @@
+specVersion: 0.2.0
+name: pangoro-dictionary
+version: 1.0.0
+description: ''
+repository: git@github.com:darwinia-network/subql-dictionary.git
+
+schema:
+  file: ./schema.graphql
+
+network:
+  genesisHash: '0xf37f31c4481e3c937ad40b672c561d0c0b1fb70b40e51a0d56dad30d60e4db58'
+  endpoint: wss://pangoro-rpc.darwinia.network/
+  chaintypes:
+    file: ./types.yaml
+
+dataSources:
+  - kind: substrate/Runtime
+    startBlock: 26960
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - handler: handleBlock
+          kind: substrate/BlockHandler
