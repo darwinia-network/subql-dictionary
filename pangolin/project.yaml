@@ -1,0 +1,23 @@
+specVersion: 0.2.0
+name: pangolin-dictionary
+version: 1.0.0
+description: ''
+repository: git@github.com:darwinia-network/subql-dictionary.git
+
+schema:
+  file: ./schema.graphql
+
+network:
+  genesisHash: '0xce44bd16fc276f9e457b452577b6c2678e57768260012af127479fed806da7e7'
+  endpoint: wss://pangolin-rpc.darwinia.network
+  chaintypes:
+    file: ./dist/chaintypes.js
+
+dataSources:
+  - kind: substrate/Runtime
+    startBlock: 119850
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - handler: handleBlock
+          kind: substrate/BlockHandler
