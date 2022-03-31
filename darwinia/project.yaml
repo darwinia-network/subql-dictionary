@@ -1,0 +1,27 @@
+specVersion: 0.2.0
+name: darwinia-dictionary
+version: 1.0.0
+description: A subquery project provide dictionary data & service for a substrate-based network
+repository: git@github.com:darwinia-network/subql-dictionary.git
+
+schema:
+  file: "./schema.graphql"
+
+dataSources:
+  - kind: substrate/Runtime
+    startBlock: 6345000 
+    mapping:
+      file: "./dist/index.js"
+      handlers:
+        - handler: handleBlock
+          kind: substrate/BlockHandler
+        - handler: handleEvent
+          kind: substrate/EventHandler
+        - handler: handleCall
+          kind: substrate/CallHandler
+
+network:
+  genesisHash: "0x729cb8f2cf428adcf81fe69610edda32c5711b2ff17de747e8604a3587021db8"
+  endpoint: wss://rpc.darwinia.network
+  chaintypes:
+    file: "./types.yaml"
