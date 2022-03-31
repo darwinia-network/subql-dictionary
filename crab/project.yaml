@@ -1,0 +1,27 @@
+specVersion: 0.2.0
+name: crab-dictionary
+version: 1.0.0
+description: A subquery project provide dictionary data & service for a substrate-based network
+repository: git@github.com:darwinia-network/subql-dictionary.git
+
+schema:
+  file: "./schema.graphql"
+
+dataSources:
+  - kind: substrate/Runtime
+    startBlock: 8305000 
+    mapping:
+      file: "./dist/index.js"
+      handlers:
+        - handler: handleBlock
+          kind: substrate/BlockHandler
+        - handler: handleEvent
+          kind: substrate/EventHandler
+        - handler: handleCall
+          kind: substrate/CallHandler
+
+network:
+  genesisHash: "0x34f61bfda344b3fad3c3e38832a91448b3c613b199eb23e5110a635d71c13c65"
+  endpoint: wss://crab-rpc.darwinia.network
+  chaintypes:
+    file: "./types.yaml"
