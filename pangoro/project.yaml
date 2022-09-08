@@ -8,14 +8,14 @@ schema:
   file: ./schema.graphql
 
 network:
-  genesisHash: '0xf37f31c4481e3c937ad40b672c561d0c0b1fb70b40e51a0d56dad30d60e4db58'
+  genesisHash: '0x1fe062d52429523226af0570f59dcc19fa0b0b841377d9f530b618deedf2eef5'
   endpoint: wss://pangoro-rpc.darwinia.network/
   chaintypes:
     file: ./types.yaml
 
 dataSources:
   - kind: substrate/Runtime
-    startBlock: 26960
+    startBlock: 1
     mapping:
       file: ./dist/index.js
       handlers:
